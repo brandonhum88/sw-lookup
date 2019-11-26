@@ -34220,7 +34220,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "mt-8" },
+    { staticClass: "sm:flex lg:block lg:mt-8" },
     [
       _c("search"),
       _vm._v(" "),
@@ -34263,7 +34263,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "mt-2 -mx-3" },
+    { staticClass: "sm:mx-2 mt-2 lg:-mx-3" },
     [
       _c(
         "router-link",
@@ -34419,7 +34419,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "relative mb-4 flex" },
+    { staticClass: "relative sm:mr-5 sm:w-64 lg:mb-4 flex" },
     [
       _c(
         "span",
@@ -34975,14 +34975,19 @@ var render = function() {
         [
           _vm._l(_vm.placeHolderCount, function(n) {
             return _vm.loading
-              ? _c("li", { staticClass: "w-1/3" }, [_c("PersonPlaceholder")], 1)
+              ? _c(
+                  "li",
+                  { staticClass: "w-full lg:w-1/2 xl:w-1/3" },
+                  [_c("PersonPlaceholder")],
+                  1
+                )
               : _vm._e()
           }),
           _vm._v(" "),
           _vm._l(_vm.resources, function(info) {
             return _c(
               "li",
-              { staticClass: "w-1/3" },
+              { staticClass: "w-full lg:w-1/2 xl:w-1/3" },
               [_c("Person", { attrs: { info: info } })],
               1
             )
@@ -35137,7 +35142,7 @@ var render = function() {
             return _vm.loading
               ? _c(
                   "li",
-                  { staticClass: "w-1/2" },
+                  { staticClass: "w-full xl:w-1/2" },
                   [_c("StarshipPlaceholder")],
                   1
                 )
@@ -35147,7 +35152,7 @@ var render = function() {
           _vm._l(_vm.resources, function(info) {
             return _c(
               "li",
-              { staticClass: "w-1/2" },
+              { staticClass: "w-full xl:w-1/2" },
               [_c("Starship", { attrs: { info: info } })],
               1
             )
@@ -35197,25 +35202,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-screen flex", attrs: { id: "app" } }, [
-    _c(
-      "div",
-      { staticClass: "w-80 px-8 py-4 bg-gray-200 border-r" },
-      [_c("logo"), _vm._v(" "), _c("nav-bar")],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "flex-1 py-4 px-12 min-w-0 bg-gray-100" },
-      [
-        _c("router-view", {
-          key: _vm.$route.name + (_vm.$route.params.id || "")
-        })
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "h-screen flex sm:flex-col lg:flex-row",
+      attrs: { id: "app" }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "sm:w-full sm:h-24 sm:px-8 sm:flex sm:justify-between sm:items-center lg:w-80 lg:h-full lg:block lg:px-8 py-4 bg-gray-200 border-r"
+        },
+        [_c("logo"), _vm._v(" "), _c("nav-bar")],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex-1 py-4 px-12 min-w-0 bg-gray-100" },
+        [
+          _c("router-view", {
+            key: _vm.$route.name + (_vm.$route.params.id || "")
+          })
+        ],
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

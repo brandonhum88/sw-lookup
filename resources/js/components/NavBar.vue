@@ -1,5 +1,5 @@
 <template>
-    <nav class="mt-8">
+    <nav class="sm:flex lg:block lg:mt-8">
         <search></search>
         <div v-for="route in $router.options.routes">
             <nav-link v-if="route.name" :route="route.name" ></nav-link>

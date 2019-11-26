@@ -2,11 +2,11 @@
     <div>
         <ul class="flex flex-wrap justify-between">
             <!-- Placeholders until page data is loaded -->
-            <li v-if="loading" v-for="n in placeHolderCount" class="w-1/3">
+            <li v-if="loading" v-for="n in placeHolderCount" class="w-full lg:w-1/2 xl:w-1/3">
                 <PersonPlaceholder></PersonPlaceholder>
             </li>
 
-            <li v-for="info in resources" class="w-1/3">
+            <li v-for="info in resources" class="w-full lg:w-1/2 xl:w-1/3">
                 <Person :info="info"></Person>
             </li>
         </ul>

@@ -2,11 +2,11 @@
     <div>
         <ul class="flex flex-wrap">
             <!-- Placeholders until page data is loaded -->
-            <li v-if="loading" v-for="n in 10" class="w-1/2">
+            <li v-if="loading" v-for="n in 10" class="w-full xl:w-1/2">
                 <StarshipPlaceholder></StarshipPlaceholder>
             </li>
 
-            <li v-for="info in resources" class="w-1/2">
+            <li v-for="info in resources" class="w-full xl:w-1/2">
                 <Starship :info="info"></Starship>
             </li>
         </ul>

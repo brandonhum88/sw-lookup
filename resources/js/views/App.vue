@@ -1,7 +1,7 @@
 <template>
-    <div class="h-screen flex" id="app">
+    <div class="h-screen flex sm:flex-col lg:flex-row" id="app">
         <!-- Nav Side Bar -->
-        <div class="w-80 px-8 py-4 bg-gray-200 border-r">
+        <div class="sm:w-full sm:h-24 sm:px-8 sm:flex sm:justify-between sm:items-center lg:w-80 lg:h-full lg:block lg:px-8 py-4 bg-gray-200 border-r">
             <logo></logo>
             <nav-bar></nav-bar>
         </div>
