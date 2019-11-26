@@ -9,13 +9,15 @@ use GuzzleHttp\Client;
 
 class Endpoint extends Controller
 {
+    const SWAPI_URI = 'https://swapi.co/api/';
+
     protected $resource_type;
     protected $client;
 
     public function __construct()
     {
         $this -> client = new Client([
-            'base_uri' => 'https://swapi.co/api/',
+            'base_uri' => self::SWAPI_URI,
             'verify' => false
         ]);
     }
@@ -31,7 +33,14 @@ class Endpoint extends Controller
         $result = $this -> client -> request('GET', $this -> resource_type . "/?page=$page_no");
         $data = json_decode($result->getBody());
 
-        return ['resources' => $data -> results, 'count' => $data -> count];
+        $results = $data -> results;
+
+        foreach($results as &$resource)
+        {
+            $resource -> id = $this -> ExtractID($resource);
+        }
+
+        return ['resources' => $results, 'count' => $data -> count];
     }
 
     // Get a single resource
@@ -54,9 +63,7 @@ class Endpoint extends Controller
 
         foreach($data -> results as $resource)
         {
-            // Extract the id from the url
-            $id = str_replace('https://swapi.co/api/' . $this -> resource_type . '/', '', $resource -> url);
-            $id = str_replace('/', '', $id);
+            $id = $this -> ExtractID($resource);
 
             $options[] = [
                 'id' => $id,
@@ -65,5 +72,12 @@ class Endpoint extends Controller
         }
 
         return $options;
+    }
+
+    // Extract the id from the url
+    public function ExtractID($resource)
+    {
+        $id = str_replace(self::SWAPI_URI . $this -> resource_type . '/', '', $resource -> url);
+        return str_replace('/', '', $id);
     }
 }

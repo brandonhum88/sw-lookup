@@ -3,11 +3,13 @@
         <ul class="flex flex-wrap justify-between">
             <!-- Placeholders until page data is loaded -->
             <li v-if="loading" v-for="n in placeHolderCount" class="w-full lg:w-1/2 xl:w-1/3">
-                <PersonPlaceholder></PersonPlaceholder>
+                <ProfilePlaceholder v-if="characterId"></ProfilePlaceholder>
+                <PersonPlaceholder v-else></PersonPlaceholder>
             </li>
 
             <li v-for="info in resources" class="w-full lg:w-1/2 xl:w-1/3">
-                <Person :info="info"></Person>
+                <Profile v-if="characterId" :info="info"></Profile>
+                <Person v-else :info="info"></Person>
             </li>
         </ul>
 
@@ -38,7 +40,9 @@
     import Global from './Global'
     import Paginate from 'vuejs-paginate'
     import Person from '../components/Person'
+    import Profile from '../components/Profile'
     import PersonPlaceholder from '../components/placeholders/Person'
+    import ProfilePlaceholder from '../components/placeholders/Profile'
 
     export default {
         extends: Global,
@@ -85,7 +89,9 @@
         components: {
             Paginate,
             Person,
-            PersonPlaceholder
+            Profile,
+            PersonPlaceholder,
+            ProfilePlaceholder
         }
     }
 </script>
